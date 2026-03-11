@@ -90,6 +90,7 @@ Predict session depth using early-session behavioral signals
 - Evaluation metric: **AUC**
 
 Goal: estimate whether early engagement behavior predicts deeper listening sessions
+
 ---
 
 ## Key Findings
