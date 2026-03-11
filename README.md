@@ -38,6 +38,7 @@ Output: **11K listening sessions**
 
 ### 3. Fatigue Feature Engineering
 Analyze how skip behavior evolves within sessions
+
 Features: 
 - `active_skip`: forward button pressed mid-play
 - `position_id`: track position within a session
@@ -47,6 +48,7 @@ Purpose: capture fatigue effects as sessions progress
 
 ### 4. Novelty Feature Engineering
 Measure familiarity and novelty using listening history. 
+
 Features: 
 - `lifetime_track_plays`: total historical plays of a track
 - `days_since_last_track_play`: recency of prior exposure
@@ -57,6 +59,7 @@ Analysis examines how novelty and familiarity affect skip probability
 
 ### 5. Session Level Feature Engineering
 Aggregate event-level data to analyze session dynamics
+
 Session attributes:
 - `session_len`: number of tracks in session
 - `session_duration_minutes`: total session duration
@@ -71,12 +74,14 @@ Output: **session_level dataset**
 
 ### 6. Early-Session Feature Engineering (First 3 Tracks)
 Measure early-session user behavior to capture calibration dynamics
+
+Early-session features:
 - `early_intervention_rate`: frequency of manual overrides
   (`fwdbtn`, `backbtn`, `clickrow`)
 - `early_first_listen_rate`: proportion of first-time tracks
 - `early_mean_recency`: average days since last listen
 
-These features capture how userse actively tune their listening environment at session start
+These features capture how users actively tune their listening environment at session start
 
 ### 7. Predictive Modeling
 Predict session depth using early-session behavioral signals
