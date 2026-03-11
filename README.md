@@ -32,28 +32,34 @@ The goal was to determine whether skip behavior reflects dissatisfaction or enga
 - Output: **11K listening sessions** 
 
 ### 3. Fatigue Feature Engineering
-- **active_skip** (if user clicked forward button mid-play)
-- **position_id** (track position within session)
-- **skip_by_position** (probability of skipping given position in a session)
+- **active_skip**: If user clicked forward button mid-play
+- **position_id**: Track position within session
+- **skip_by_position**: Probability of skipping given position in a session
 
 ### 4. Novelty Feature Engineering
-Analysis of skip rate by absolute and relative novelty metrics
-- **lifetime_track_plays** (Lifetime plays of a track)
-- **days_since_last_track_play** (Days since last time track was played)
+- Analysis of skip rate by absolute and relative novelty metrics
+- **lifetime_track_plays**: Lifetime plays of a track
+- **days_since_last_track_play**: Days since last time track was played
 
-### 5. Session Level Table
+### 5. Session Level Feature Engineering
+- Analysis of what features separate long sessions from short ones
 - Aggregate session level attributes:
-  - session_len (number of tracks in session)
-  - skip_rate (average amount of skips in session)
-  - 
+  - **session_len** (number of tracks in session)
+  - **session_duration_minutes** (length of session in minutes)
+  - **skip_rate** (average amount of skips in session)
+  - **first_listen_rate** (average number of new songs in session)
+  - **mean_recency_days** (average number of days since all tracks have been listened to)
+  - **long_session** (boolean flag for sessions > 10 tracks)
+-Output: Session level dataframe 
 
-### 5. Early-Session Feature Engineering (First 3 Tracks)
-- **Early intervention rate**  
+### 6. Early-Session Feature Engineering (First 3 Tracks)
+- Analysis of what early features are associated long sessions
+- **early_intervention_rate**: average frequency of the following actions 
   (`fwdbtn`, `backbtn`, `clickrow`)
-- **Early first-listen rate**
-- **Early recency** (days since prior play)
+- **early_first_listen_rate**: mean completely new songs
+- **earlyu_mean_recency**: average amount of days since last listen
 
-### 4. Predictive Modeling
+### 7. Predictive Modeling
 - Target: Long session (>10 tracks)
 - Logistic regression model
 - Evaluation via AUC
