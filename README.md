@@ -21,51 +21,62 @@ The goal was to determine whether skip behavior reflects dissatisfaction or enga
 ## Methodology
 
 ### 1. Data Processing
-- Load in all .json files
-- Drop all non-music data and unnecessary features
+Load and clean Spotify Extended Streaming History logs
+- Load all `.json` streaming history files
+- Filter non-music events and unnecessary metadata
 - Parse timestamps and order listening events chronologically
 - Construct a clean event-level dataset of listening behavior
+Output: **~240K listening events**
 
 ### 2. Listening Session Construction
-- Defined session boundaries using 30-minute inactivity gaps.
-- Filter out sessions less than 2 tracks long
+Define listening sessions using behavioral inactivity thresholds
+- Define a new session when inactivity exceeds **30 minutes**
+- Remove sessions shorter than **2 tracks**
 - Output: **11K listening sessions** 
 
 ### 3. Fatigue Feature Engineering
-- **active_skip**: If user clicked forward button mid-play
-- **position_id**: Tracks position within session
-- **skip_by_position**: Probability of skipping given position in a session
+Analyze how skip behavior evolves within sessions
+Features: 
+- `active_skip`: forward button pressed mid-play
+- `position_id`: track position within a session
+- `skip_by_position`: probability of skipping by track position
+Purpose: capture fatigue effects as sessions progress
 
 ### 4. Novelty Feature Engineering
-- Analysis of skip rate by *absolute* and *relative* novelty metrics
-- **lifetime_track_plays**: Lifetime plays of a track
-- **days_since_last_track_play**: Days since last time track was played
-- **recency_bin** 
-  (`≤1d`, `1–7d`, `7–30d`, `30–90d`, `90–365d`, `1y+`)
+Measure familiarity and novelty using listening history. 
+Features: 
+- `lifetime_track_plays`: total historical plays of a track
+- `days_since_last_track_play`: recency of prior exposure
+- `recency_bin`: categorical recency buckets
+  (≤1d, 1–7d, 7–30d, 30–90d, 90–365d, 1y+)
+Analysis examines how novelty and familiarity affect skip probability
 
 ### 5. Session Level Feature Engineering
-- Analysis of what features separate long sessions from short ones
-- Aggregate session level attributes:
-  - **session_len**: number of tracks in session
-  - **session_duration_minutes**: length of session in minutes
-  - **skip_rate**: average amount of skips in session
-  - **first_listen_rate**: average number of new songs in session
-  - **mean_recency_days**: average number of days since all tracks have been listened to
-  - **long_session**: boolean flag for sessions > 10 tracks
--Output: Session level dataframe 
+Aggregate event-level data to analyze session dynamics
+Session attributes:
+- `session_len`: number of tracks in session
+- `session_duration_minutes`: total session duration
+- `skip_rate`: average skip frequency
+- `first_listen_rate`: proportion of first-time listens
+- `mean_recency_days`: average track recency
+Define engagement outcome: 
+- `long_session`: indicator for sessions > 10 tracks
+-Output: **session_level dataset** 
 
 ### 6. Early-Session Feature Engineering (First 3 Tracks)
-- Analysis of what early features are associated long sessions
-- **early_intervention_rate**: average frequency of the following actions 
+Measure early-session user behavior to capture calibration dynamics
+- `early_intervention_rate`: frequency of manual overrides
   (`fwdbtn`, `backbtn`, `clickrow`)
-- **early_first_listen_rate**: mean completely new songs
-- **earlyu_mean_recency**: average amount of days since last listen
+- `early_first_listen_rate`: proportion of first-time tracks
+- `early_mean_recency`: average days since last listen
+These features capture how userse actively tune their listening environment at session start
 
 ### 7. Predictive Modeling
-- Target: Long session (>10 tracks)
-- Logistic regression model
-- Evaluation via AUC
-
+Predict session depth using early-session behavioral signals
+- Target variable: `Long session` (>10 tracks)
+- Model: Logistic regression classifier
+- Evaluation metric: **AUC**
+Goal: estimate whether early engagement behavior predicts deeper listening sessions
 ---
 
 ## Key Findings
