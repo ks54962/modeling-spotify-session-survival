@@ -33,11 +33,11 @@ The goal was to determine whether skip behavior reflects dissatisfaction or enga
 
 ### 3. Fatigue Feature Engineering
 - **active_skip** (if user clicked forward button mid-play)
-- **position_id** 
+- **position_id** (track position within session)
 - **skip_by_position** (probability of skipping given position in a session)
 
 ### 4. Novelty Feature Engineering
-- Analysis of skip rate by absolute and relative novelty metrics
+Analysis of skip rate by absolute and relative novelty metrics
 - **lifetime_track_plays** (Lifetime plays of a track)
 - **days_since_last_track_play** (Days since last time track was played)
 
