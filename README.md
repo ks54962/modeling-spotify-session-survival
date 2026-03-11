@@ -20,17 +20,20 @@ The goal was to determine whether skip behavior reflects dissatisfaction or enga
 
 ## Methodology
 
-### 1. Session Construction
+### 1. Listening Session Construction
 - Defined session boundaries using 30-minute inactivity gaps.
 - Aggregated session-level metrics (length, duration, skip rate).
 
-### 2. Early-Session Feature Engineering (First 3 Tracks)
+### 2. Fatigue Feature Engineering
+- **Active Skip ** (if user clicked forward button mid-play)
+
+### 3. Early-Session Feature Engineering (First 3 Tracks)
 - **Early intervention rate**  
   (`fwdbtn`, `backbtn`, `clickrow`)
 - **Early first-listen rate**
 - **Early recency** (days since prior play)
 
-### 3. Predictive Modeling
+### 4. Predictive Modeling
 - Target: Long session (>10 tracks)
 - Logistic regression model
 - Evaluation via AUC
