@@ -20,12 +20,27 @@ The goal was to determine whether skip behavior reflects dissatisfaction or enga
 
 ## Methodology
 
-### 1. Listening Session Construction
+### 1. Data Processing
+- Load in all .json files
+- Drop all non-music data and unnecessary features
+- Parse timestamps and order listening events chronologically
+- Construct a clean event-level dataset of listening behavior
+
+### 2. Listening Session Construction
 - Defined session boundaries using 30-minute inactivity gaps.
-- Aggregated session-level metrics (length, duration, skip rate).
+- Filter out sessions less than 2 tracks long
+Output: **11K listening sessions** 
 
 ### 2. Fatigue Feature Engineering
-- **Active Skip ** (if user clicked forward button mid-play)
+- **Active Skip** (if user clicked forward button mid-play)
+- **Position ID** 
+- **Skip By Position** (probability of skipping given position in a session)
+
+### 3. Novelty Feature Engineering
+- **Absolute Novelty** (Lifetime plays of a song)
+- **Relative Novelty** ()
+
+
 
 ### 3. Early-Session Feature Engineering (First 3 Tracks)
 - **Early intervention rate**  
