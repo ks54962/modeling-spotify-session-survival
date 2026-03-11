@@ -29,20 +29,25 @@ The goal was to determine whether skip behavior reflects dissatisfaction or enga
 ### 2. Listening Session Construction
 - Defined session boundaries using 30-minute inactivity gaps.
 - Filter out sessions less than 2 tracks long
-Output: **11K listening sessions** 
+- Output: **11K listening sessions** 
 
-### 2. Fatigue Feature Engineering
-- **Active Skip** (if user clicked forward button mid-play)
-- **Position ID** 
-- **Skip By Position** (probability of skipping given position in a session)
+### 3. Fatigue Feature Engineering
+- **active_skip** (if user clicked forward button mid-play)
+- **position_id** 
+- **skip_by_position** (probability of skipping given position in a session)
 
-### 3. Novelty Feature Engineering
-- **Absolute Novelty** (Lifetime plays of a song)
-- **Relative Novelty** ()
+### 4. Novelty Feature Engineering
+- Analysis of skip rate by absolute and relative novelty metrics
+- **lifetime_track_plays** (Lifetime plays of a track)
+- **days_since_last_track_play** (Days since last time track was played)
 
+### 5. Session Level Table
+- Aggregate session level attributes:
+-- session_len (number of tracks in session)
+-- skip_rate (average amount of skips in session)
+-- 
 
-
-### 3. Early-Session Feature Engineering (First 3 Tracks)
+### 5. Early-Session Feature Engineering (First 3 Tracks)
 - **Early intervention rate**  
   (`fwdbtn`, `backbtn`, `clickrow`)
 - **Early first-listen rate**
