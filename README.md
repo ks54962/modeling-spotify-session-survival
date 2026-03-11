@@ -26,13 +26,15 @@ Load and clean Spotify Extended Streaming History logs
 - Filter non-music events and unnecessary metadata
 - Parse timestamps and order listening events chronologically
 - Construct a clean event-level dataset of listening behavior
+
 Output: **~240K listening events**
 
 ### 2. Listening Session Construction
 Define listening sessions using behavioral inactivity thresholds
-- Define a new session when inactivity exceeds **30 minutes**
-- Remove sessions shorter than **2 tracks**
-- Output: **11K listening sessions** 
+- Define a new session when inactivity exceeds 30 minutes
+- Remove sessions shorter than 2 tracks
+
+Output: **11K listening sessions** 
 
 ### 3. Fatigue Feature Engineering
 Analyze how skip behavior evolves within sessions
@@ -40,6 +42,7 @@ Features:
 - `active_skip`: forward button pressed mid-play
 - `position_id`: track position within a session
 - `skip_by_position`: probability of skipping by track position
+
 Purpose: capture fatigue effects as sessions progress
 
 ### 4. Novelty Feature Engineering
@@ -49,6 +52,7 @@ Features:
 - `days_since_last_track_play`: recency of prior exposure
 - `recency_bin`: categorical recency buckets
   (≤1d, 1–7d, 7–30d, 30–90d, 90–365d, 1y+)
+
 Analysis examines how novelty and familiarity affect skip probability
 
 ### 5. Session Level Feature Engineering
@@ -59,9 +63,11 @@ Session attributes:
 - `skip_rate`: average skip frequency
 - `first_listen_rate`: proportion of first-time listens
 - `mean_recency_days`: average track recency
+
 Define engagement outcome: 
 - `long_session`: indicator for sessions > 10 tracks
--Output: **session_level dataset** 
+
+Output: **session_level dataset** 
 
 ### 6. Early-Session Feature Engineering (First 3 Tracks)
 Measure early-session user behavior to capture calibration dynamics
@@ -69,6 +75,7 @@ Measure early-session user behavior to capture calibration dynamics
   (`fwdbtn`, `backbtn`, `clickrow`)
 - `early_first_listen_rate`: proportion of first-time tracks
 - `early_mean_recency`: average days since last listen
+
 These features capture how userse actively tune their listening environment at session start
 
 ### 7. Predictive Modeling
@@ -76,6 +83,7 @@ Predict session depth using early-session behavioral signals
 - Target variable: `Long session` (>10 tracks)
 - Model: Logistic regression classifier
 - Evaluation metric: **AUC**
+
 Goal: estimate whether early engagement behavior predicts deeper listening sessions
 ---
 
