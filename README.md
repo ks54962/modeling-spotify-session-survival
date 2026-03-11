@@ -33,23 +33,25 @@ The goal was to determine whether skip behavior reflects dissatisfaction or enga
 
 ### 3. Fatigue Feature Engineering
 - **active_skip**: If user clicked forward button mid-play
-- **position_id**: Track position within session
+- **position_id**: Tracks position within session
 - **skip_by_position**: Probability of skipping given position in a session
 
 ### 4. Novelty Feature Engineering
-- Analysis of skip rate by absolute and relative novelty metrics
+- Analysis of skip rate by *absolute* and *relative* novelty metrics
 - **lifetime_track_plays**: Lifetime plays of a track
 - **days_since_last_track_play**: Days since last time track was played
+- **recency_bin** 
+  (`≤1d`, `1–7d`, `7–30d`, `30–90d`, `90–365d`, `1y+`)
 
 ### 5. Session Level Feature Engineering
 - Analysis of what features separate long sessions from short ones
 - Aggregate session level attributes:
-  - **session_len** (number of tracks in session)
-  - **session_duration_minutes** (length of session in minutes)
-  - **skip_rate** (average amount of skips in session)
-  - **first_listen_rate** (average number of new songs in session)
-  - **mean_recency_days** (average number of days since all tracks have been listened to)
-  - **long_session** (boolean flag for sessions > 10 tracks)
+  - **session_len**: number of tracks in session
+  - **session_duration_minutes**: length of session in minutes
+  - **skip_rate**: average amount of skips in session
+  - **first_listen_rate**: average number of new songs in session
+  - **mean_recency_days**: average number of days since all tracks have been listened to
+  - **long_session**: boolean flag for sessions > 10 tracks
 -Output: Session level dataframe 
 
 ### 6. Early-Session Feature Engineering (First 3 Tracks)
