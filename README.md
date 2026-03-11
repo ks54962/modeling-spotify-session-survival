@@ -104,11 +104,20 @@ Goal: estimate whether early engagement behavior predicts deeper listening sessi
 
 ---
 
+## Results Visualization
+![alt text](image-1.png)
+
+![alt text](image.png)
+
+
+---
+
 ## Product Implications
 
 - Early-session override behavior may signal active engagement rather than churn risk.
 - Engagement tuning in the first few interactions is critical for session depth.
 - Skip metrics should not be naively interpreted as dissatisfaction signals.
+- Product analytics should distinguish exploration behavior from disengagement.
 
 ---
 
@@ -120,3 +129,6 @@ Goal: estimate whether early engagement behavior predicts deeper listening sessi
     ```bash
     pip install -r requirements.txt
 4. Run the notebook
+
+## Technologies
+Python, Pandas, NumPy, sckikit-learn, Duc
