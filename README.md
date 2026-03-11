@@ -43,9 +43,9 @@ The goal was to determine whether skip behavior reflects dissatisfaction or enga
 
 ### 5. Session Level Table
 - Aggregate session level attributes:
--- session_len (number of tracks in session)
--- skip_rate (average amount of skips in session)
--- 
+  - session_len (number of tracks in session)
+  - skip_rate (average amount of skips in session)
+  - 
 
 ### 5. Early-Session Feature Engineering (First 3 Tracks)
 - **Early intervention rate**  
