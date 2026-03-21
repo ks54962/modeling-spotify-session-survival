@@ -61,11 +61,11 @@ Early intervention vs. probability of long session:
 
 ## Repository Structure
     .
+    ├── data/                       # (Not included) Spotify streaming history JSON files
     ├── figures/
     │   └── early_intervention.png  # Visualization used in README
     ├── notebook/
     │   └── analysis.ipynb          # Full analysis workflow
-    ├── data/                       # (Not included) Spotify streaming history JSON files
     ├── README.md
     └── requirements.txt
 
