@@ -13,7 +13,8 @@ venv/
 .ipynb_checkpoints/
 
 # Local data (DO NOT upload Spotify export)
-data/
+data/*
+!data/.gitkeep
 *.json
 *.parquet
 *.csv
